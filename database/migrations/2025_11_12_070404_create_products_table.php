@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // Ganti 'menus' menjadi 'products'
+        Schema::create('products', function (Blueprint $table) { 
+            $table->id();
+            // Ganti 'nama_menu' menjadi 'nama_produk'
+            $table->string('nama_produk'); 
+            $table->string('foto')->nullable();
+            $table->decimal('harga', 10, 2);
+            $table->timestamps();
+        });
+    }
+
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        // Ganti 'menus' menjadi 'products'
+        Schema::dropIfExists('products'); 
+    }
+};
